@@ -606,10 +606,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Pin,
 		C3.Plugins.Mouse.Cnds.OnClick,
 		C3.Plugins.Sprite.Acts.Spawn,
+		C3.Plugins.Audio.Acts.Play,
 		C3.Plugins.System.Cnds.EveryTick,
 		C3.Plugins.Sprite.Acts.SetTowardPosition,
 		C3.Plugins.Mouse.Exps.X,
 		C3.Plugins.Mouse.Exps.Y,
+		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Acts.SetY,
 		C3.Plugins.System.Exps.random,
@@ -617,7 +619,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.ResetPersisted,
 		C3.Plugins.Sprite.Cnds.OnCollision,
 		C3.Plugins.Sprite.Acts.Destroy,
-		C3.Plugins.Audio.Acts.Play,
+		C3.Plugins.Sprite.Acts.SetX,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Behaviors.Pin.Acts.Pin,
 		C3.Plugins.Text.Cnds.IsVisible
@@ -740,9 +742,14 @@ self.C3_JsPropNameTable = [
 	self.C3_ExpressionFuncs = [
 		() => 2,
 		() => 0,
+		() => "",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0();
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => v0.GetValue();
 		},
 		() => -70,
 		p => {
@@ -754,7 +761,7 @@ self.C3_JsPropNameTable = [
 			return () => f0(600, 900);
 		},
 		() => 1,
-		() => ""
+		() => 2000
 	];
 }
 
